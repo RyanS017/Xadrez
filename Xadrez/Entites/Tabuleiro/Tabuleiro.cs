@@ -13,7 +13,6 @@ namespace Xadrez.Entites.Tabuleiro
 
         private Peca[,] Peca;
 
-        public Tabuleiro() { }
         public Tabuleiro(int linhas, int colunas)
         {
             Linhas = linhas;
@@ -24,6 +23,12 @@ namespace Xadrez.Entites.Tabuleiro
         public Peca Pecas(int linha, int coluna)
         {
             return Peca[linha, coluna];
+        }
+
+        public void ColocarPeca(Peca p, Posiçao pos)
+        {
+            Peca[pos.Linha, pos.Coluna] = p;
+            p.Posicao = pos;
         }
     }
 }

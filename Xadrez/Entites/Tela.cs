@@ -21,7 +21,7 @@ namespace Xadrez.Entites
                     }
                     else
                     {
-                        Console.Write(tab.Pecas + " ");
+                        Console.Write(tab.Pecas(i,j) + " ");
                     }
                     
                 }

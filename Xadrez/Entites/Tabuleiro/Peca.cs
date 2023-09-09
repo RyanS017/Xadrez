@@ -15,9 +15,9 @@ namespace Xadrez.Entites.Tabuleiro
 
         public Tabuleiro Tabuleiro { get; set; }
 
-        public Peca(Posiçao posicao, Cor cor, Tabuleiro tabuleiro)
+        public Peca(Cor cor, Tabuleiro tabuleiro)
         {
-            Posicao = posicao;
+            Posicao = null;
             Cor = cor;
             Tabuleiro = tabuleiro;
             QntMov = 0;
