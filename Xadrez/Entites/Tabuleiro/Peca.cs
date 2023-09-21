@@ -22,5 +22,9 @@ namespace Xadrez.Entites.Tabuleiro
             Tabuleiro = tabuleiro;
             QntMov = 0;
         }
+        public void IncrementarMov()
+        {
+            QntMov++;
+        }
     }
 }
