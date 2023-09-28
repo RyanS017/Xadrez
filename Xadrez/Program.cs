@@ -15,7 +15,17 @@ namespace Xadrez
             {
 
                 PartidaXadrez partida = new PartidaXadrez();
-                Tela.Tel(partida.tab);
+                while (!partida.Estado)
+                {
+                    Console.Clear();
+                    Tela.Tel(partida.tab);
+                    Console.WriteLine();
+                    Console.Write("Origem: ");
+                    Posiçao origem = Tela.LerPosicaoXadrez().ToPosicao();
+                    Console.Write("Destino: ");
+                    Posiçao destino = Tela.LerPosicaoXadrez().ToPosicao();
+                    partida.ExecutaMov(origem, destino);
+                }
             }
             catch (TabuleiroException e) 
             {

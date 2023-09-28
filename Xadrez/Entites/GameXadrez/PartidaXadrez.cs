@@ -11,6 +11,7 @@ namespace Xadrez.Entites.GameXadrez
         public Tabuleiro.Tabuleiro tab { get; private set; }
         private int Turno;
         private Cor JogadorAtual;
+        public bool Estado { get; private set; }
 
         public PartidaXadrez()
         {
@@ -18,6 +19,7 @@ namespace Xadrez.Entites.GameXadrez
             Turno = 1;
             JogadorAtual = Cor.Branco;
             ColocarPeca();
+            Estado = false;
         }
         public void ExecutaMov(Posiçao origem, Posiçao destino)
         {

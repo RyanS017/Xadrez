@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using Xadrez.Entites.GameXadrez;
 using Xadrez.Entites.Tabuleiro;
 
 namespace Xadrez.Entites
@@ -32,7 +33,13 @@ namespace Xadrez.Entites
             }
             Console.WriteLine("  a b c d e f g h");
         }
-
+        public static PosicaoXadrez LerPosicaoXadrez()
+        {
+            string s = Console.ReadLine();
+            char coluna = s[0];
+            int linha = int.Parse(s[1] + "");
+            return new PosicaoXadrez(coluna, linha);
+        }
         private static void ImprimirPeca(Peca peca)
         {
             if (peca.Cor == Cor.Branco)

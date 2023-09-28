@@ -34,7 +34,7 @@ namespace Xadrez.Entites.Tabuleiro
         }
         public Peca RetirarPeca(Posiçao pos)
         {
-            if (Peca == null)
+            if (Pecas(pos) == null)
             {
                 return null;
             }
@@ -47,7 +47,7 @@ namespace Xadrez.Entites.Tabuleiro
         public void ColocarPeca(Peca p, Posiçao pos)
         {
             if (ExistePeca(pos)){
-                throw new TabuleiroException("Existe uam peça nessa posição!");
+                throw new TabuleiroException("Existe uma peça nessa posição!");
             }
             Peca[pos.Linha, pos.Coluna] = p;
             p.Posicao = pos;
