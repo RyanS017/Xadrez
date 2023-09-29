@@ -12,5 +12,60 @@ namespace Xadrez.Entites.GameXadrez
         {
             return "T";
         }
+        private bool PodeMover(Posiçao pos)
+        {
+            Peca p = Tabuleiro.Pecas(pos);
+            return p == null || p.Cor != Cor;
+        }
+        public override bool[,] MovimentosPossiveis()
+        {
+            bool[,] mat = new bool[Tabuleiro.Linhas, Tabuleiro.Linhas];
+            Posiçao pos = new Posiçao(0, 0);
+            //cima
+            pos.DefinirPosicao(Posicao.Linha - 1, Posicao.Coluna);
+            while (Tabuleiro.PosicaoValida(pos) && PodeMover(pos))
+            {
+                mat[pos.Linha, pos.Coluna] = true;
+                if(Tabuleiro.Pecas(pos) != null && Tabuleiro.Pecas(pos).Cor != Cor)
+                {
+                    break;
+                }
+                pos.Linha = pos.Linha - 1;
+            }
+            //baixo
+            pos.DefinirPosicao(Posicao.Linha + 1, Posicao.Coluna);
+            while (Tabuleiro.PosicaoValida(pos) && PodeMover(pos))
+            {
+                mat[pos.Linha, pos.Coluna] = true;
+                if (Tabuleiro.Pecas(pos) != null && Tabuleiro.Pecas(pos).Cor != Cor)
+                {
+                    break;
+                }
+                pos.Linha = pos.Linha + 1;
+            }
+            //direita
+            pos.DefinirPosicao(Posicao.Linha, Posicao.Coluna + 1) ;
+            while (Tabuleiro.PosicaoValida(pos) && PodeMover(pos))
+            {
+                mat[pos.Linha, pos.Coluna] = true;
+                if (Tabuleiro.Pecas(pos) != null && Tabuleiro.Pecas(pos).Cor != Cor)
+                {
+                    break;
+                }
+                pos.Coluna = pos.Coluna + 1;
+            }
+            //esquerda
+            pos.DefinirPosicao(Posicao.Linha, Posicao.Coluna - 1);
+            while (Tabuleiro.PosicaoValida(pos) && PodeMover(pos))
+            {
+                mat[pos.Linha, pos.Coluna] = true;
+                if (Tabuleiro.Pecas(pos) != null && Tabuleiro.Pecas(pos).Cor != Cor)
+                {
+                    break;
+                }
+                pos.Coluna = pos.Coluna - 1;
+            }
+            return mat;
+        }
     }
 }
