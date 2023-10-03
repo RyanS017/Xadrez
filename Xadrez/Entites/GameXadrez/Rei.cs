@@ -19,7 +19,7 @@ namespace Xadrez.Entites.GameXadrez
         }
         public override bool[,] MovimentosPossiveis()
         {
-            bool[,] mat = new bool[Tabuleiro.Linhas, Tabuleiro.Linhas];
+            bool[,] mat = new bool[Tabuleiro.Linhas, Tabuleiro.Colunas];
             Posiçao pos = new Posiçao(0, 0);
             //cima
             pos.DefinirPosicao(Posicao.Linha - 1, Posicao.Coluna);
