@@ -26,6 +26,10 @@ namespace Xadrez.Entites.Tabuleiro
         {
             QntMov++;
         }
+        public void DecrementarMov()
+        {
+            QntMov--;
+        }
 
         public bool ExisteMovimentoPossivel()
         {

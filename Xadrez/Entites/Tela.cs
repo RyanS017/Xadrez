@@ -25,8 +25,54 @@ namespace Xadrez.Entites
             }
             Console.WriteLine("  a b c d e f g h");
         }
+        public static void ImprimirPartida(PartidaXadrez partida)
+        {
+            Console.Clear();
+            Tela.Tel(partida.tab);
+            Console.WriteLine();
+            ImprimirPecaCapturadas(partida);
+            Console.WriteLine("Turno: " + partida.Turno);
+            if (!partida.Estado)
+            {
+                Console.WriteLine("Aguardando jogada: " + partida.JogadorAtual);
+                if (partida.Xeque)
+                {
+                    Console.WriteLine("XEQUE");
+                }
+                Console.WriteLine();
+            }
+            else
+            {
+                Console.WriteLine("XEQUE MATE");
+                Console.WriteLine("Vencedor: " + partida.JogadorAtual);
+            }
+        }
+
+        public static void ImprimirPecaCapturadas(PartidaXadrez partida)
+        {
+            Console.WriteLine("Peças capturadas: ");
+            Console.Write("Brancas: ");
+            ImprimirConjunto(partida.PecasCaptu(Cor.Branco));
+            Console.WriteLine();
+            Console.Write("Pretas: ");
+            ConsoleColor aux = Console.ForegroundColor;
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            ImprimirConjunto(partida.PecasCaptu(Cor.Preta));
+            Console.WriteLine();
+            Console.ForegroundColor = aux;
+        }
+
+        public static void ImprimirConjunto(HashSet<Peca> conjunto)
+        {
+            Console.Write("[");
+            foreach(Peca x in conjunto)
+            {
+                Console.Write(x + " ");
+            }
+            Console.Write("] ");
+        }
         public static void Tel(Tabuleiro.Tabuleiro tab, bool[,] mat)
-        { 
+        {
             ConsoleColor FundoOriginal = Console.BackgroundColor;
             ConsoleColor FundoAlterado = ConsoleColor.DarkGray;
             for (int i = 0; i < tab.Linhas; i++)
