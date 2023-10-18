@@ -55,7 +55,7 @@ namespace Xadrez.Entites.Tabuleiro
 
         public bool PosicaoValida(Posiçao pos)
         {
-            if (pos.Coluna >= Colunas || pos.Linha >= Linhas || pos.Linha < 0 || pos.Coluna < 0)
+            if (pos.Coluna >= this.Colunas || pos.Linha >= this.Linhas || pos.Linha < 0 || pos.Coluna < 0)
             {
                 return false;
             }
