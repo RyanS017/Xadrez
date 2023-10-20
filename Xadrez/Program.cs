@@ -3,7 +3,6 @@ using System.Globalization;
 using Xadrez.Entites;
 using Xadrez.Entites.Tabuleiro;
 using Xadrez.Entites.GameXadrez;
-using System.Reflection.Metadata;
 
 namespace Xadrez
 {
@@ -13,6 +12,7 @@ namespace Xadrez
         {
             try
             {
+                // AINDA NÃO ESTA COM AS JOGADAS ESPECIAIS, ROQUE GRANDE, ROQUE PEQUENP, PROMOÇÃO ETC
 
                 PartidaXadrez partida = new PartidaXadrez();
                 while (!partida.Estado)

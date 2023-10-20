@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Xadrez.Entites.Tabuleiro
+﻿namespace Xadrez.Entites.Tabuleiro
 {
     internal abstract class Peca
     {
@@ -31,6 +25,7 @@ namespace Xadrez.Entites.Tabuleiro
             QntMov--;
         }
 
+        //Verificãção se é possivel mover uma determinada peça
         public bool ExisteMovimentoPossivel()
         {
             bool[,] mat = MovimentosPossiveis();

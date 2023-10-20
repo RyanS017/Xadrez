@@ -4,9 +4,10 @@ namespace Xadrez.Entites.GameXadrez
 {
     internal class Rei : Peca
     {
+        private PartidaXadrez Partida;
         public Rei(Cor cor, Tabuleiro.Tabuleiro tabuleiro) : base(cor, tabuleiro)
         {
-
+            
         }
         public override string ToString()
         {
@@ -70,6 +71,9 @@ namespace Xadrez.Entites.GameXadrez
             {
                 mat[pos.Linha, pos.Coluna] = true;
             }
+            //Jogada especial
+
+
             return mat;
         }
     }

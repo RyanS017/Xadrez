@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics.SymbolStore;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using Xadrez.Entites.Tabuleiro;
+﻿using Xadrez.Entites.Tabuleiro;
 namespace Xadrez.Entites.GameXadrez
 {
     internal class PartidaXadrez
@@ -52,6 +45,8 @@ namespace Xadrez.Entites.GameXadrez
                 throw new TabuleiroException("Posição de destino inválida");
             }
         }
+
+        //Metodos para execução de movimento
         public Peca ExecutaMov(Posiçao origem, Posiçao destino)
         {
             Peca p = tab.RetirarPeca(origem);
@@ -74,6 +69,17 @@ namespace Xadrez.Entites.GameXadrez
                 PecasCapturadas.Remove(capturadap);
             }
             tab.ColocarPeca(p, origem);
+        }
+        private void MudaJogador()
+        {
+            if (JogadorAtual == Cor.Branco)
+            {
+                JogadorAtual = Cor.Preta;
+            }
+            else
+            {
+                JogadorAtual = Cor.Branco;
+            }
         }
         public void RealizaMovimento(Posiçao origem, Posiçao destino)
         {
@@ -101,6 +107,8 @@ namespace Xadrez.Entites.GameXadrez
                 MudaJogador();
             }
         }
+
+        //Verificações de estados
         private Cor Adversario(Cor cor)
         {
             if (cor == Cor.Branco)
@@ -171,6 +179,8 @@ namespace Xadrez.Entites.GameXadrez
             }
             return true;
         }
+
+        //Lista de peças capturadas e peçaas em jogo
         public HashSet<Peca> PecasCaptu(Cor cor)
         {
             HashSet<Peca> aux = new HashSet<Peca>();
@@ -198,18 +208,7 @@ namespace Xadrez.Entites.GameXadrez
         }
 
 
-
-        private void MudaJogador()
-        {
-            if (JogadorAtual == Cor.Branco)
-            {
-                JogadorAtual = Cor.Preta;
-            }
-            else
-            {
-                JogadorAtual = Cor.Branco;
-            }
-        }
+        //Inserção das peças ao  tabuleiro
         public void ColocarNovaPeca(char coluna, int linha, Peca peca)
         {
             tab.ColocarPeca(peca, new PosicaoXadrez(coluna, linha).ToPosicao());

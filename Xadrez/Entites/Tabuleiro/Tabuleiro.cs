@@ -19,11 +19,7 @@ namespace Xadrez.Entites.Tabuleiro
             Colunas = colunas;
             Peca = new Peca[Linhas, Colunas];
         }
-        public bool ExistePeca(Posiçao pos)
-        {
-            ValidarPosicao(pos);
-            return Pecas(pos) != null;
-        }
+        //Verificação da peça selecionada
         public Peca Pecas(int linha, int coluna)
         {
             return Peca[linha, coluna];
@@ -32,6 +28,29 @@ namespace Xadrez.Entites.Tabuleiro
         {
             return Pecas(pos.Linha, pos.Coluna);
         }
+        public bool ExistePeca(Posiçao pos)
+        {
+            ValidarPosicao(pos);
+            return Pecas(pos) != null;
+        }
+        public bool PosicaoValida(Posiçao pos)
+        {
+            if (pos.Coluna >= this.Colunas || pos.Linha >= this.Linhas || pos.Linha < 0 || pos.Coluna < 0)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public void ValidarPosicao(Posiçao pos)
+        {
+            if (!PosicaoValida(pos))
+            {
+                throw new TabuleiroException("Posição invalída!");
+            }
+        }
+
+        //Metodos que auxiliam na realização de movimentos
         public Peca RetirarPeca(Posiçao pos)
         {
             if (Pecas(pos) == null)
@@ -53,21 +72,5 @@ namespace Xadrez.Entites.Tabuleiro
             p.Posicao = pos;
         }
 
-        public bool PosicaoValida(Posiçao pos)
-        {
-            if (pos.Coluna >= this.Colunas || pos.Linha >= this.Linhas || pos.Linha < 0 || pos.Coluna < 0)
-            {
-                return false;
-            }
-            return true;
-        }
-
-        public void ValidarPosicao(Posiçao pos)
-        {
-            if (!PosicaoValida(pos))
-            {
-                throw new TabuleiroException("Posição invalída!");
-            }
-        }
     }
 }
